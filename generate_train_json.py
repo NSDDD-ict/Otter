@@ -1,5 +1,6 @@
 from tqdm import tqdm
 import orjson
+import argparse
 
 def make_a_train(input_file, output_file):
 
@@ -25,4 +26,12 @@ def make_a_train(input_file, output_file):
     with open(output_file, "wb") as file:
         file.write(orjson.dumps(new_dict))
         
-make_a_train("/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/FunQAf128_instructions_train.json", "/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/FunQAf128_train_train.json")
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--input_file', type=str, default='/data/chengshuang/Otter/output/FunQAf128_instructions_train.json')
+    parser.add_argument('--output_file', type=str, default='/data/chengshuang/Otter/output/FunQAf128_train_train.json')
+    args = parser.parse_args()
+    input_file = args.input_file
+    output_file = args.output_file
+    make_a_train(input_file, output_file)
+    # make_a_train("/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/FunQAf128_instructions_train.json", "/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/FunQAf128_train_train.json")
