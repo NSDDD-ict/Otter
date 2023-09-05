@@ -8,7 +8,7 @@ from image_utils import get_json_data_generator, create_folder
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--name", type=str, default='video.DenseCaptions',help="Path to the dataset class.")
-    parser.add_argument("--num_threads", type=int, default=64, help="Number of threads.")
+    parser.add_argument("--num_threads", type=int, default=32, help="Number of threads.")
     parser.add_argument("--image_path", default='/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/all_videos', help="Path to the prompt file.")
     parser.add_argument("--image_root", default=None, help="Path to the image root.")
 
