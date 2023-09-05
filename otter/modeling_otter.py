@@ -7,7 +7,7 @@ from transformers.modeling_outputs import CausalLMOutputWithPast
 from einops import rearrange, repeat
 from accelerate.hooks import add_hook_to_module, AlignDevicesHook
 
-from .configuration_otter import OtterConfig
+from otter.configuration_otter import OtterConfig
 
 from flamingo.falcon.modelling_RW import RWForCausalLM
 from flamingo.mpt.modeling_mpt import MPTForCausalLM
@@ -1005,7 +1005,7 @@ class OtterForConditionalGeneration(OtterPreTrainedModel):
         self._encode_vision_x(vision_x=vision_x)
         output = self.lang_encoder.generate(
             input_ids=lang_x,
-            attention_mask=attention_mask,
+            # attention_mask=attention_mask,
             eos_token_id=self.eoc_token_id,
             **generate_kwargs,
         )

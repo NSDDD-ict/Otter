@@ -1,0 +1,50 @@
+[
+    {
+        "task": "H2",
+        "output": "A tuxedo-colored cat is squeezed into a glass, vigorously shaking its head.",
+        "instruction": "Provide a detailed account of the video's funny moment.",
+        "ID": "test_5"
+    },
+    {
+        "task": "H3",
+        "output": "The feline is making a great effort to dip its head inside the cup to sip water. Afterward, the cat starts to wildly shake its head as it can't take it out, creating a comical comparison between its initial attempt and its later awkwardness.",
+        "instruction": "What makes the entire video funny?",
+        "ID": "test_30"
+    },
+    {
+        "task": "H4",
+        "output": "The feline says that the most delicious water to drink is the one found in a human's cup.",
+        "instruction": "Write a caption for the video.",
+        "ID": "test_55"
+    },
+    {
+        "task": "C2",
+        "output": "A silver and white-clad individual impersonating a chicken, ran and clucked while rushing behind a brown table. Standing next to the table was a person dressed up as KFC's Colonel Sanders. Following that, another person dressed in flesh-coloured clothes impersonating fried chicken sprinted out from beside the table.",
+        "instruction": "Provide a detailed account of the video's imaginative scene.",
+        "ID": "test_13765"
+    },
+    {
+        "task": "C3",
+        "output": "The uniqueness of this video lies in mimicking the transformation of the fried chicken image by using people exchanging behind a table. The brown table and sizzling sound imitate the frying process of chicken perfectly.",
+        "instruction": "What makes the entire video creative?",
+        "ID": "test_13790"
+    },
+    {
+        "task": "C4",
+        "output": "Crispy chicken.",
+        "instruction": "Write a caption for the video.",
+        "ID": "test_13815"
+    },
+    {
+        "task": "M2",
+        "output": "A person has tightly clenched their right hand, and upon opening it, two coins can be seen.",
+        "instruction": "Provide a detailed account of the video's enchanting moment.",
+        "ID": "test_20990"
+    },
+    {
+        "task": "M3",
+        "output": "Objects cannot materialize out of thin air. If two coins were initially held in the hand and one is removed, it is impossible for two coins to still be present.",
+        "instruction": "What makes the entire video magical?",
+        "ID": "test_21015"
+    }
+]

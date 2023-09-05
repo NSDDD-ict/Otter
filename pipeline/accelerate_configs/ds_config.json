@@ -19,7 +19,7 @@
             "device": "cpu",
             "pin_memory": true
         },
-        "contiguous_gradients": true,
+        "contiguous_gradients": false,
         "sub_group_size": 1e9,
         "stage3_max_live_parameters": 1e9,
         "stage3_max_reuse_distance": 1e9

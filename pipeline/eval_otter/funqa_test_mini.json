@@ -1,0 +1,50 @@
+[
+    {
+        "task": "H2",
+        "output": " A black and white cow cat is squeezed inside a water glass and is vigorously shaking its head.",
+        "instruction": "Provide a detailed account of the video's funny moment.",
+        "ID": "test_5"
+    },
+    {
+        "task": "H3",
+        "output": " The cat is trying hard to stick its head into the cup to drink water. However, it couldn't pull its head out and started to frantically shake its head. The contrast between its initial effort and later embarrassment is amusing.",
+        "instruction": "What makes the entire video funny?",
+        "ID": "test_30"
+    },
+    {
+        "task": "H4",
+        "output": " Cat: The water in the human's cup is the best to drink.",
+        "instruction": "Write a caption for the video.",
+        "ID": "test_55"
+    },
+    {
+        "task": "C2",
+        "output": " A person dressed in silver and white clothes pretending to be a chicken, clucked and ran behind a brown table where a person dressed as KFC's Colonel Sanders was standing. Then another person dressed in flesh-colored clothes pretending to be fried chicken ran out from beside the table.",
+        "instruction": "Provide a detailed account of the video's imaginative scene.",
+        "ID": "test_13765"
+    },
+    {
+        "task": "C3",
+        "output": " The creative point of this video lies in using the exchange of people behind the table to imitate the transformation of the fried chicken image. With a brown table and the sound of frying, it vividly imitates the process of making fried chicken.",
+        "instruction": "What makes the entire video creative?",
+        "ID": "test_13790"
+    },
+    {
+        "task": "C4",
+        "output": " Fried chicken.",
+        "instruction": "Write a caption for the video.",
+        "ID": "test_13815"
+    },
+    {
+        "task": "M2",
+        "output": " A person's right hand is clenched tightly. When the clenched right hand is opened, two coins are found in the hand.",
+        "instruction": "Provide a detailed account of the video's enchanting moment.",
+        "ID": "test_20990"
+    },
+    {
+        "task": "M3",
+        "output": " Objects cannot appear out of nowhere. If there were originally two coins in hand and one is taken away, there cannot be two coins remaining.",
+        "instruction": "What makes the entire video magical?",
+        "ID": "test_21015"
+    }
+]

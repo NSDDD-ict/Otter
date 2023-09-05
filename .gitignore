@@ -3,7 +3,10 @@
 __pycache__/
 *$py.class
 *.sage.py
-
+data/
+*.jsonl
+*.csv
+*.pt
 # Special and Backup files
 *.bak
 *.log
@@ -12,7 +15,8 @@ __pycache__/
 *.zip
 *.dat
 *.dir
-*.json
+# *.json
+output/
 *.html
 *.mp4
 *.png
@@ -115,7 +119,7 @@ scripts/
 nginx/
 logs/
 ofa_compress/
-train_*.sh
+# train_*.sh
 gpt_playground/
 evaluation/
 data/

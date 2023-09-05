@@ -237,7 +237,7 @@ class MPTModel(MPTPreTrainedModel):
                 if len(past_key_values) != self.config.n_layers:
                     raise ValueError(
                         f"past_key_values must provide a past_key_value for each attention "
-                        + f"layer in the network ({len(past_key_values)=}; {self.config.n_layers=})."
+                        + f"layer in the network ({len(past_key_values)}; {self.config.n_layers})."
                     )
                 # For attn_impl: triton and flash the past key tensor spec is (batch, seq, dim).
                 # For attn_impl: torch the past key tensor spec is (batch, heads, head_dim, seq).
@@ -426,7 +426,7 @@ class MPTForCausalLM(MPTPreTrainedModel):
 
         if self.logit_scale is not None:
             if self.logit_scale == 0:
-                warnings.warn(f"Multiplying logits by {self.logit_scale=}. This will produce uniform (uninformative) outputs.")
+                warnings.warn(f"Multiplying logits by {self.logit_scale}. This will produce uniform (uninformative) outputs.")
             logits *= self.logit_scale
 
         loss = None

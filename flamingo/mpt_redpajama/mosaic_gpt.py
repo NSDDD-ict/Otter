@@ -70,11 +70,11 @@ class MosaicGPT(PreTrainedModel):
                 if logit_scale == "inv_sqrt_d_model":
                     logit_scale = 1 / math.sqrt(config.d_model)
                 else:
-                    raise ValueError(f"{logit_scale=} is not recognized as an option; use numeric value or 'inv_sqrt_d_model'.")
+                    raise ValueError(f"{logit_scale} is not recognized as an option; use numeric value or 'inv_sqrt_d_model'.")
             self.logit_scale = logit_scale
 
         if config.init_device != "meta":
-            print(f'You are using {config.init_device=}, but you can also use config.init_device="meta" with Composer + FSDP for fast initialization.')
+            print(f'You are using {config.init_device}, but you can also use config.init_device="meta" with Composer + FSDP for fast initialization.')
             self.apply(self.param_init_fn)
 
         self.is_causal = not self.prefix_lm
@@ -262,7 +262,7 @@ class MosaicGPT(PreTrainedModel):
                 if len(past_key_values) != self.config.n_layers:
                     raise ValueError(
                         f"past_key_values must provide a past_key_value for each attention "
-                        + f"layer in the network ({len(past_key_values)=}; {self.config.n_layers=})."
+                        + f"layer in the network ({len(past_key_values)}; {self.config.n_layers})."
                     )
                 # get the key tensor whose spec should be (batch, seq, dim), and
                 # collect the `seq`, so that the position embedding is shifted
@@ -318,7 +318,7 @@ class MosaicGPT(PreTrainedModel):
 
         if self.logit_scale is not None:
             if self.logit_scale == 0:
-                warnings.warn(f"Multiplying logits by {self.logit_scale=}. This will produce uniform (uninformative) outputs.")
+                warnings.warn(f"Multiplying logits by {self.logit_scale}. This will produce uniform (uninformative) outputs.")
             logits *= self.logit_scale
 
         loss = None

@@ -504,7 +504,8 @@ class MimicitDataset(Dataset):
     def process_funqa(self, instruction_id, instruction, answer, image_ids, in_context_example_ids, resample_frames=128):
         patch_images = torch.tensor([])
         all_texts = ""
-        all_instruction_ids = in_context_example_ids + [instruction_id]
+        # all_instruction_ids = in_context_example_ids + [instruction_id]
+        all_instruction_ids = [instruction_id]
         random.shuffle(all_instruction_ids)
         for cur_instruction_id in all_instruction_ids[:]:
             cur_instruction = self.dataset[cur_instruction_id]["instruction"]
@@ -611,6 +612,20 @@ class MimicitDataset(Dataset):
             self.dataset[cur_train_id]["image_ids"],
             self.train_config[cur_train_id],
         )
+        # cur_train_id = list(self.train_config['data'].keys())[index]
+        # (
+        #     instruction_id, ## 视频文件名
+        #     instruction, ## 问题
+        #     answer, ## 答案
+        #     image_ids, ## 采样帧名
+        #     in_context_example_ids, ## 视频文件名
+        # ) = (
+        #     cur_train_id,
+        #     self.dataset[cur_train_id]["instruction"],
+        #     self.dataset[cur_train_id]["answer"],
+        #     self.dataset[cur_train_id]["image_ids"],
+        #     self.train_config['data'][cur_train_id],
+        # )        
         inst_format = self.inst_format
         resample_frames = self.resample_frames
         # self.max_src_length = self.max_tgt_length = 256
@@ -726,6 +741,8 @@ def collate_fn(samples, pad_idx, eos_idx):
             "attention_masks": src_tokens_masks,
         },
     }
+    print(src_tokens)
+    print(src_tokens_masks)
     larger_incontext_num = max([s["patch_images"].size(0) for s in samples])
     if samples[0].get("patch_images", None) is not None:
         batch["net_input"]["patch_images"] = torch.stack([sample["patch_images"] for sample in samples], dim=0)

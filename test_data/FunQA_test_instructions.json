@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "version": "1.0",
+    "time": "2023-08-18",
+    "author": "FunQA"
+  },
+  "data": {
+    "FunQA_INS_000002": {
+      "instruction": "What is the character Castle doing before walks towards the board?",
+      "answer": "The character Castle is standing up.",
+      "image_ids": [
+        "FunQA_test_img_01",
+        "FunQA_test_img_02",
+        "FunQA_test_img_03",
+        "FunQA_test_img_04",
+        "FunQA_test_img_05",
+        "FunQA_test_img_06",
+        "FunQA_test_img_07",
+        "FunQA_test_img_08",
+        "FunQA_test_img_09",
+        "FunQA_test_img_10",
+        "FunQA_test_img_11",
+        "FunQA_test_img_12",
+        "FunQA_test_img_13",
+        "FunQA_test_img_14",
+        "FunQA_test_img_15",
+        "FunQA_test_img_16"
+      ],
+      "rel_ins_ids": [
+        "FunQA_INS_000003"
+      ]
+    },
+    "FunQA_INS_000003": {
+      "instruction": "What is the character Castle doing before walks towards the board?",
+      "answer": "The character Castle is standing up.",
+      "image_ids": [
+        "FunQA_test_img_01",
+        "FunQA_test_img_02",
+        "FunQA_test_img_03",
+        "FunQA_test_img_04",
+        "FunQA_test_img_05",
+        "FunQA_test_img_06",
+        "FunQA_test_img_07",
+        "FunQA_test_img_08",
+        "FunQA_test_img_09",
+        "FunQA_test_img_10",
+        "FunQA_test_img_11",
+        "FunQA_test_img_12",
+        "FunQA_test_img_13",
+        "FunQA_test_img_14",
+        "FunQA_test_img_15",
+        "FunQA_test_img_16"
+      ],
+      "rel_ins_ids": [
+        "FunQA_INS_000002"
+      ]
+    }
+  }
+}

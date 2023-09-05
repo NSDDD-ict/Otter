@@ -35,7 +35,7 @@ from deepspeed.utils.zero_to_fp32 import load_state_dict_from_zero_checkpoint
 
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-
+os.environ["WANDB_API_KEY"] = 'f98e0c6a5194658b46358496abc966de3c02aa04'
 # The flag below controls whether to allow TF32 on matmul. This flag defaults to False
 # in PyTorch 1.12 and later.
 torch.backends.cuda.matmul.allow_tf32 = True
@@ -405,6 +405,12 @@ def parse_args():
         type=float,
         default=1.0,
         help="The ratio for resampling the past dataset. Should be a float between 0 and 1.",
+    )
+    parser.add_argument(
+        "--resample_frames",
+        type=int,
+        default=32,
+        help="The number of frames to resample from the past dataset. Should be an integer.",
     )
 
     # optimizer args
