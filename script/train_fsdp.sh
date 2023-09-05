@@ -1,9 +1,9 @@
 accelerate launch --config_file=pipeline/accelerate_configs/accelerate_config_fsdp.yaml \
     pipeline/train/instruction_following.py \
     --pretrained_model_name_or_path=/mnt/bn/ecom-govern-maxiangqian-lq/lj/OTTER-9B-INIT \
-    --mimicit_path="/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/FunQAf128_instructions_train.json" \
-    --images_path="/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/output/FunQA.json" \
-    --train_config_path="/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/FunQAf128_train_train.json" \
+    --mimicit_path="/data/chengshuang/Otter/output/FunQAf128_instructions_train.json" \
+    --images_path="/data/chengshuang/Otter/output/FunQA.json" \
+    --train_config_path="/data/chengshuang/Otter/output/FunQAf128_train_train.json" \
     --batch_size=4 \
     --num_epochs=5 \
     --report_to_wandb \
@@ -18,5 +18,5 @@ accelerate launch --config_file=pipeline/accelerate_configs/accelerate_config_fs
     --gradient_checkpointing \
     --gradient_accumulation_steps=4 \
     --save_ckpt_each_epoch \
-    --external_save_dir=/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/exp_result \
+    # --external_save_dir=/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/exp_result \
     # --offline

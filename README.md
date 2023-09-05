@@ -64,11 +64,11 @@ bash train_zeros.sh
 ## 测试
 1. 转换成 huggingface checkpoint
 ```
-/data/chengshuang/Otter/otter/converting_otter_pt_to_hf.py
+bash script/convert_otter_to_hf.sh
 ```
 2. 推理
 ```
-/data/chengshuang/Otter/pipeline/demo/otter_batch_infer.py
+python3 pipeline/demo/otter_batch_infer.py
 ```
 
 ## 计算分数
