@@ -504,8 +504,8 @@ class MimicitDataset(Dataset):
     def process_funqa(self, instruction_id, instruction, answer, image_ids, in_context_example_ids, resample_frames=128):
         patch_images = torch.tensor([])
         all_texts = ""
-        # all_instruction_ids = in_context_example_ids + [instruction_id]
-        all_instruction_ids = [instruction_id]
+        all_instruction_ids = in_context_example_ids + [instruction_id]
+        # all_instruction_ids = [instruction_id]
         random.shuffle(all_instruction_ids)
         for cur_instruction_id in all_instruction_ids[:]:
             cur_instruction = self.dataset[cur_instruction_id]["instruction"]
@@ -741,8 +741,6 @@ def collate_fn(samples, pad_idx, eos_idx):
             "attention_masks": src_tokens_masks,
         },
     }
-    print(src_tokens)
-    print(src_tokens_masks)
     larger_incontext_num = max([s["patch_images"].size(0) for s in samples])
     if samples[0].get("patch_images", None) is not None:
         batch["net_input"]["patch_images"] = torch.stack([sample["patch_images"] for sample in samples], dim=0)

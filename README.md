@@ -54,11 +54,11 @@ python3 generate_train_json.py --input_file '/data/chengshuang/Otter/output/FunQ
 ## 训练
 1. fsdp训练
 ```
-bash train_fsdp.sh
+bash script/train_fsdp.sh
 ```
 2. zero2训练
 ```
-bash train_zeros.sh
+bash script/train_zeros.sh
 ```
 
 ## 测试

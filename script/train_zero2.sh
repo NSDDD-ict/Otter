@@ -1,11 +1,11 @@
 accelerate launch --config_file=pipeline/accelerate_configs/accelerate_config_zero2.yaml \
     pipeline/train/instruction_following.py \
-    --pretrained_model_name_or_path=/mnt/bn/ecom-govern-maxiangqian-lq/lj/OTTER-9B-INIT \
-    --mimicit_path="/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/FunQAf128_instructions_train.json" \
-    --images_path="/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/output/FunQA.json" \
-    --train_config_path="/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/FunQAf128_train_train.json" \
+    --pretrained_model_name_or_path=/data/chengshuang/Otter_origin/model_weight/models--luodian--OTTER-9B-INIT/snapshots/cc075926603ab1ffdef5f0a7809f84201ec31346 \
+    --mimicit_path="/data/chengshuang/Otter/output/FunQAf128_instructions_train.json" \
+    --images_path="/data/chengshuang/Otter/output/FunQA.json" \
+    --train_config_path="/data/chengshuang/Otter/output/FunQAf128_train_train.json" \
     --batch_size=16 \
-    --num_epochs=2 \
+    --num_epochs=5 \
     --report_to_wandb \
     --wandb_entity=ljunius \
     --run_name=otter9B_funqa \
@@ -16,7 +16,7 @@ accelerate launch --config_file=pipeline/accelerate_configs/accelerate_config_ze
     --warmup_steps_ratio=0.01 \
     --save_ckpt_each_epoch \
     --gradient_checkpointing \
-    --gradient_accumulation_steps=4 \
+    --gradient_accumulation_steps=1 \
     --save_ckpt_each_epoch \
     --external_save_dir=/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/exp_result \
     # --offline
