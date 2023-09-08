@@ -1,5 +1,6 @@
 from typing import Optional, List
-
+import sys
+sys.path.append('/data/chengshuang/Otter')
 import torch
 import torch.nn as nn
 from transformers.modeling_utils import PreTrainedModel
@@ -20,7 +21,7 @@ from flamingo.mpt_redpajama.mosaic_gpt import MosaicGPT
 from transformers.models.auto import AutoModel, AutoModelForCausalLM, AutoTokenizer
 from peft import get_peft_model, LoraConfig, TaskType
 
-import sys
+
 import random
 
 # The package importlib_metadata is in a different place, depending on the python version.

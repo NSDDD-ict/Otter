@@ -22,7 +22,10 @@ from transformers import (
 import wandb
 import sys
 sys.path.append('/data/chengshuang/Otter')
+<<<<<<< HEAD
 sys.path.append('/lustre/S/zhangyang/chengshuang/LLM/Otter')
+=======
+>>>>>>> eb4623dc9986a12760b0167333c90c08f4e2609f
 from flamingo.configuration_flamingo import FlamingoConfig
 from flamingo.modeling_flamingo import FlamingoForConditionalGeneration
 from otter.modeling_otter import OtterForConditionalGeneration

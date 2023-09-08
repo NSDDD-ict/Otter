@@ -10,7 +10,7 @@ import sys
 import json
 from tqdm import tqdm
 
-sys.path.append("../..")
+sys.path.append("/data/chengshuang/Otter")
 from otter.modeling_otter import OtterForConditionalGeneration
 
 # Disable warnings
@@ -25,16 +25,13 @@ elif load_bit == "bf16":
 elif load_bit == "fp32":
     precision = {"torch_dtype": torch.float32}
 
+<<<<<<< HEAD
 # This model version is trained on MIMIC-IT DC dataset.
 model = OtterForConditionalGeneration.from_pretrained("/lustre/S/zhangyang/chengshuang/LLM/Otter/OTTER-Video-LLaMA7B-DenseCaption", device_map="auto", **precision)
 # model = OtterForConditionalGeneration.from_pretrained("/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/exp_result/final_hfckpt", device_map="auto", **precision)
+=======
+>>>>>>> eb4623dc9986a12760b0167333c90c08f4e2609f
 
-tensor_dtype = {"fp16": torch.float16, "bf16": torch.bfloat16, "fp32": torch.float32}[load_bit]
-
-model.text_tokenizer.padding_side = "left"
-tokenizer = model.text_tokenizer
-image_processor = transformers.CLIPImageProcessor()
-model.eval()
 
 # ------------------- Utility Functions -------------------
 
@@ -150,32 +147,58 @@ def get_test_video_path(root_dir, name):
         path = os.path.join(root_dir, 'test_creative', name)
     return path
 
-# 读取/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/annotation_with_ID/funqa_test_group_by_video.json
-with open('/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/annotation_with_ID/funqa_test_group_by_video.json', 'r') as f:
-    datas = json.load(f)
+import argparse
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--model_path', type=str, default='/data/chengshuang/Otter/exp_result/otter9B_funqa_icl/final_hfckpt')
+    parser.add_argument('--test_data_path', type=str, default='/data/chengshuang/Otter/data/annotation_with_ID/funqa_test_group_by_video.json')
+    parser.add_argument('--output_path', type=str, default='/data/chengshuang/Otter/infer_data/test_res.jsonl')
+    parser.add_argument('--video_path', type=str, default='/data/chengshuang/Otter/data/test')
+    parser.add_argument('--batch_size', type=int, default=8)
     
-for video_name, instructions in tqdm(datas.items(), total=len(datas)):
-    video_url = get_test_video_path('/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/test', video_name)
-    print(video_url)
-    frames_list = get_image(video_url)
-    if isinstance(frames_list, Image.Image):
-        vision_x = image_processor.preprocess([frames_list], return_tensors="pt")["pixel_values"].unsqueeze(1).unsqueeze(0)
-    elif isinstance(frames_list, list):  # list of video frames
-        vision_x = image_processor.preprocess(frames_list, return_tensors="pt")["pixel_values"].unsqueeze(0).unsqueeze(0)
-    else:
-        raise ValueError("Invalid input data. Expected PIL Image or list of video frames.")
-    batch_size = 2
-    vision_x = vision_x
-    for data in tqdm(instructions):
-        prompts_input = data['instruction']
-        task = data['task']
-        if task == 'H1' or task == 'C1' or task == 'M1':
-            data['predict'] = data['output']
+    args = parser.parse_args()
+    model_path = args.model_path
+    test_data_path = args.test_data_path
+    output_path = args.output_path
+    video_path = args.video_path
+    batch_size = args.batch_size
+
+    # This model version is trained on MIMIC-IT DC dataset.
+    model = OtterForConditionalGeneration.from_pretrained(model_path, device_map="auto", **precision)
+    # model = OtterForConditionalGeneration.from_pretrained("/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/exp_result/final_hfckpt", device_map="auto", **precision)
+
+    tensor_dtype = {"fp16": torch.float16, "bf16": torch.bfloat16, "fp32": torch.float32}[load_bit]
+
+    model.text_tokenizer.padding_side = "left"
+    tokenizer = model.text_tokenizer
+    image_processor = transformers.CLIPImageProcessor()
+    model.eval()
+    
+    # 读取/mnt/bn/ecom-govern-maxiangqian-lq/lj/data/dwq/annotation_with_ID/funqa_test_group_by_video.json
+    with open(test_data_path, 'r') as f:
+        datas = json.load(f)
+        
+    for video_name, instructions in tqdm(datas.items(), total=len(datas)):
+        video_url = get_test_video_path(video_path, video_name)
+        print(video_url)
+        frames_list = get_image(video_url)
+        if isinstance(frames_list, Image.Image):
+            vision_x = image_processor.preprocess([frames_list], return_tensors="pt")["pixel_values"].unsqueeze(1).unsqueeze(0)
+        elif isinstance(frames_list, list):  # list of video frames
+            vision_x = image_processor.preprocess(frames_list, return_tensors="pt")["pixel_values"].unsqueeze(0).unsqueeze(0)
         else:
-            print(prompts_input)
-            
-            response = get_response(vision_x, prompts_input, model, image_processor, tensor_dtype, batch_size=batch_size)
-            print(response)
-            data['predict'] = response
-            with open('/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/infer_data/test_res.jsonl', 'a+') as f:
-                f.write(json.dumps(data) + '\n')
+            raise ValueError("Invalid input data. Expected PIL Image or list of video frames.")
+        vision_x = vision_x
+        for data in tqdm(instructions):
+            prompts_input = data['instruction']
+            task = data['task']
+            if task == 'H1' or task == 'C1' or task == 'M1':
+                data['predict'] = data['output']
+            else:
+                print(prompts_input)
+                
+                response = get_response(vision_x, prompts_input, model, image_processor, tensor_dtype, batch_size=batch_size)
+                print(response)
+                data['predict'] = response
+                with open(output_path, 'a+') as f:
+                    f.write(json.dumps(data) + '\n')
