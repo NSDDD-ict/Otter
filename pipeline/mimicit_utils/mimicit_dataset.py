@@ -741,8 +741,6 @@ def collate_fn(samples, pad_idx, eos_idx):
             "attention_masks": src_tokens_masks,
         },
     }
-    print(src_tokens)
-    print(src_tokens_masks)
     larger_incontext_num = max([s["patch_images"].size(0) for s in samples])
     if samples[0].get("patch_images", None) is not None:
         batch["net_input"]["patch_images"] = torch.stack([sample["patch_images"] for sample in samples], dim=0)

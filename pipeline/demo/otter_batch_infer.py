@@ -26,7 +26,7 @@ elif load_bit == "fp32":
     precision = {"torch_dtype": torch.float32}
 
 # This model version is trained on MIMIC-IT DC dataset.
-model = OtterForConditionalGeneration.from_pretrained("/mnt/bn/ecom-govern-maxiangqian-lq/lj/OTTER-9B-INIT", device_map="auto", **precision)
+model = OtterForConditionalGeneration.from_pretrained("/lustre/S/zhangyang/chengshuang/LLM/Otter/OTTER-Video-LLaMA7B-DenseCaption", device_map="auto", **precision)
 # model = OtterForConditionalGeneration.from_pretrained("/mnt/bn/ecom-govern-maxiangqian-lq/lj/Otter/exp_result/final_hfckpt", device_map="auto", **precision)
 
 tensor_dtype = {"fp16": torch.float16, "bf16": torch.bfloat16, "fp32": torch.float32}[load_bit]

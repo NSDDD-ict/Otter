@@ -6,7 +6,10 @@ import os
 
 import torch
 
-from modeling_otter import OtterForConditionalGeneration
+# import sys
+# sys.path.append('/lustre/S/zhangyang/chengshuang/LLM/Otter')
+from otter.modeling_otter import OtterForConditionalGeneration
+#把路径加入到环境变量中
 
 
 # The function is to inject newly trained otter perceiver parameters into the pretrained otter init model.

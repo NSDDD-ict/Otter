@@ -5,6 +5,10 @@ from transformers.utils import logging
 from transformers.models.auto import CONFIG_MAPPING
 from transformers.models.clip import CLIPVisionConfig
 
+import os
+current_directory = os.getcwd()
+print("当前运行目录：", current_directory)
+print("当前目录下文件：", os.listdir(current_directory))
 from flamingo.falcon.configuration_RW import RWConfig
 from flamingo.mpt.configuration_mpt import MPTConfig
 from flamingo.mpt_redpajama.configuration_mosaic_gpt import MosaicGPTConfig

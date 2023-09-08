@@ -17,6 +17,7 @@ data/
 *.dir
 # *.json
 output/
+eval_code/
 *.html
 *.mp4
 *.png
